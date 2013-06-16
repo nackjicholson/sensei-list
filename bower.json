@@ -1,7 +1,7 @@
 {
   "name": "sensei-list",
   "version": "0.1.0",
-  "main": "sensei-list.js",
+  "main": "SenseiList.js",
   "ignore": [
     "lib",
     "test",
@@ -18,7 +18,8 @@
     "backbone": "~1.0.0",
     "underscore": "~1.4.4",
     "jquery": "~2.0.2",
-    "backbone-gcm": "~1.0.1"
+    "backbone-gcm": "~1.0.1",
+    "backbone.babysitter": "~0.0.6"
   },
   "devDependencies": {
     "mocha": "~1.9.0",

@@ -11,14 +11,14 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {src: ['sensei-list.js'], dest: './', cwd:'lib/', expand: true} 
+          {src: ['SenseiList.js'], dest: './', cwd:'lib/', expand: true} 
         ]
       }
     },
     uglify: {
       dist: {
         files: {
-          'sensei-list.min.js': ['lib/sensei-list.js']
+          'SenseiList.min.js': ['lib/SenseiList.js']
         }
       }
     },
