@@ -5,7 +5,6 @@ require.config({
     underscore: '/bower_components/underscore/underscore',
     backbone: '/bower_components/backbone/backbone',
     'backbone.babysitter': '/bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
-    'backbone-gcm': '/bower_components/backbone-gcm/backbone-gcm',
     chai: '/bower_components/chai/chai'
   },
   shim: {
