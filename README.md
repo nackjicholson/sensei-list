@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/CascadeEnergy/sensei-list.png?branch=master)](https://travis-ci.org/CascadeEnergy/sensei-list)
 
-description
+The SenseiList is an auto garbage collected list view inspired by (aka "ripped off version") of Backbone.Marionette's CollectionView. It is recommended that if you are in a situation where you can use [Marionette](https://github.com/marionettejs/backbone.marionette), that you do so. This view contains the bare minimum of what Marionette.CollectionView can do.
 
 Contributers:
 
@@ -26,6 +26,8 @@ Contributers:
 [top](#contents)
 ### [Install](id:install)
 
+<!--
+
 Bower is a package manager for the web built by twitter, you should check it out, and download this package.
 
 `$ npm install bower -g`  
@@ -35,11 +37,15 @@ The `--save` flag will save sensei-list as a dependency in your project's `bower
 
 OR  
 
+-->
+
 Download this project, take `sensei-list.js` or `sensei-list.min.js` files out and put them wherever you would like.
 
 ---
 [top](#contents)
 ### [Why](id:why)
+
+I needed a garbage collection solution for List views, and was not in a spot in my project where I could afford to incorporate Backbone.Marionette. I decided to blatantly copy the techniques of the marionette framework which I am very interested in learning. Pulling the functionality of CollectionView out, and writing my own tests against it was a great learning experience. As stated above, it is recommended that you use Marionette if you're able to, otherwise feel free to use SenseiList, it can be a quick and dirty solution.
 
 ---
 [top](#contents)
@@ -47,7 +53,7 @@ Download this project, take `sensei-list.js` or `sensei-list.min.js` files out a
 
 There is a small how-to in this repository at [example/example.html](https://github.com/CascadeEnergy/sensei-list/blob/master/example/example.html). 
 
-_description of what the example does here_
+The example is very basic. It begins with a list of some xmen, you can add new heroes to the collection, remove individual ones, or clear the entire list.
 
 To run the example.
 
@@ -63,6 +69,8 @@ and then navigate to <http://localhost:8000/example/example.html>
 ---
 [top](#contents)
 ### [API](id:api)
+
+_api docs needed_
 
 ---
 [top](#contents)
@@ -111,6 +119,6 @@ Also tests in the browser at <http://localhost:8000/testrunner.html>
 
 You can make an issue. Pull requests welcome.
 
-_your contact info here_
+Come talk to me on IRC freenode: `#sensei`
 
 component generated with yeoman and [backbone-module](https://github.com/nackjicholson/generator-backbone-module)
