@@ -16,8 +16,7 @@
           'jquery',
           'underscore',
           'backbone',
-          'backbone.babysitter',
-          'backbone-gcm'
+          'backbone.babysitter'
         ], factory);
     } else {
         // Browser globals (root is window)
@@ -25,11 +24,10 @@
           root.jQuery,
           root._,
           root.Backbone,
-          root.ChildViewContainer,
-          root.gcm
+          root.Backbone.ChildViewContainer
         );
   }
-}(this, function ($, _, Backbone, ChildViewContainer, gcm) {
+}(this, function ($, _, Backbone, ChildViewContainer) {
   'use strict';
 
   // This is SenseiList.
@@ -57,10 +55,15 @@
       this.listenTo(this.collection, "remove", this.freeItem, this);
       this.listenTo(this.collection, "reset", this.render, this);
     },
-    
+
+    // todo, make this better.
+    // This is essentially a hook for doing things like templating before the list is rendered.
+    beforeRender: function() {},
+
     // Renders the list.
     // Override to change or add functionality to this method.
     render: function() {
+      this.beforeRender();
       this._renderBabies();
       return this;
     },

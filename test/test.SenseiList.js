@@ -50,9 +50,27 @@ define([
       expect(SenseiList).to.be.a('function');
     });
 
+    describe('.beforeRender()', function() {
+      it('is a method', function() {
+        expect(list.beforeRender).to.be.a('function');
+      });
+
+      it('is a noop', function() {
+        expect(list.beforeRender()).to.be.undefined;
+      });
+    });
+
     describe('.render()', function() {
       it('is a method', function() {
         expect(list.render).to.be.a('function');
+      });
+
+      it('calls .beforeRender', function(done) {
+        list.beforeRender = function() {
+          done();
+        };
+
+        list.render();
       });
 
       it('calls _renderBabies', function(done) {
@@ -61,6 +79,10 @@ define([
         };
 
         list.render();
+      });
+
+      it('is chainable', function() {
+        expect(list.render()).to.eql(list);
       });
     });
 

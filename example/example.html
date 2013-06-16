@@ -13,12 +13,108 @@
   <script type="text/javascript" src="../bower_components/jquery/jquery.js"></script>
   <script type="text/javascript" src="../bower_components/underscore/underscore.js"></script>
   <script type="text/javascript" src="../bower_components/backbone/backbone.js"></script>
-  <script type="text/javascript" src="../sensei-list.js"></script>
+  <script type="text/javascript" src="../bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+  <script type="text/javascript" src="../SenseiList.js"></script>
   <script type="text/javascript">
     $(function() {
       'use strict';
-      // write an example here
+
+      var Hero
+        , Heroes
+        , HeroItem
+        , HeroesList
+        , list;
+
+      Hero = Backbone.Model.extend({
+        defaults: {
+          name: null,
+          sidekicks: []
+        },
+        initialize: function() {
+          var sidekicks = this.get('sidekicks');
+          this.sidekicks = new Heroes(sidekicks);
+        }
+      });
+
+      Heroes = Backbone.Collection.extend({
+        model: Hero
+      });
+
+      HeroItem = Backbone.View.extend({
+        tagName: 'li',
+
+        template: _.template($('#hero-item-template').html()),
+
+        events: {
+          "click .destroy": "destroy"
+        },
+
+        free: function() {
+          this.remove();
+          this.model.off();
+        },
+
+        render: function() {
+          var locals = this.model.toJSON();
+          this.$el.html(this.template(locals));
+          return this;
+        },
+
+        destroy: function(e) {
+          this.model.destroy();
+        }
+      });
+
+      HeroesList = SenseiList.extend({
+        tagName: 'ul',
+        template: _.template($('#hero-list-template').html()),
+        itemView: HeroItem,
+
+        events: {
+          "keypress .add": "pressAdd",
+          "click .clear": "clear"
+        },
+
+        beforeRender: function() {
+          this.$el.html(this.template());
+        },
+
+        pressAdd: function(e) {
+          if(e.keyCode === 13) {
+            this.collection.add({name: e.target.value});
+            $(e.target).val("");
+          }
+        },
+
+        clear: function(e) {
+          this.collection.reset();
+        }
+      });
+
+      var xmen = [
+        {name: 'Professor X'},
+        {name: 'Jean Grey'},
+        {name: 'Wolverine'},
+        {name: 'Cyclops'}
+      ];
+
+      var heroes = new Heroes(xmen);
+
+      var list = new HeroesList({
+        collection: heroes
+      });
+
+      $('#app').html(list.render().el);
     });
+  </script>
+
+  <!-- TEMPLATES -->
+  <script type="text/template" id="hero-list-template">
+    <input type="text" class="add" placeholder="add a hero">
+    <input type="button" class="clear" value="clear">
+  </script>
+  <script type="text/template" id="hero-item-template">
+    <%= name %><input type="button" class="destroy" value="remove">
   </script>
 </body>
 </html>
