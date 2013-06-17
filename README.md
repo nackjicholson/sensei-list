@@ -21,6 +21,12 @@ Contributers:
 ---
 ### [Usage](id:usage)
 
+    var HeroItem = Backbone.View.extend({});
+    var HeroesList = SenseiList.extend({
+      itemView: HeroItem
+    });
+
+see the [example](#example) for more.
 
 ---
 [top](#contents)
