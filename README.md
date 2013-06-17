@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/CascadeEnergy/sensei-list.png?branch=master)](https://travis-ci.org/CascadeEnergy/sensei-list)
 
-The SenseiList is an auto garbage collected list view inspired by (aka "ripped off version") of Backbone.Marionette's CollectionView. It is recommended that if you are in a situation where you can use [Marionette](https://github.com/marionettejs/backbone.marionette), that you do so. This view contains the bare minimum of what Marionette.CollectionView can do.
+The SenseiList is an auto garbage collected list view inspired by (aka "ripped off from") Backbone.Marionette's CollectionView. It is recommended that if you are in a situation where you can use [Marionette](https://github.com/marionettejs/backbone.marionette), that you do so. This view contains the bare minimum of what Marionette.CollectionView can do.
 
 Contributers:
 
@@ -26,7 +26,10 @@ Contributers:
 [top](#contents)
 ### [Install](id:install)
 
+I may release this as a bower package if I need to. You should really just use Marionette though. I can't stress that enough.
+
 <!--
+
 Bower is a package manager for the web built by twitter, you should check it out, and download this package.
 
 `$ npm install bower -g`  
