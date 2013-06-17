@@ -1,5 +1,6 @@
 // TODO Test constructor methods somehow.
 // TODO investigate if it makes sense to rewrite some tests with sinon.
+// TODO tests to make sure things work differently when you don't supply `itemView` or a `collection`
 
 define([
   'jquery',
