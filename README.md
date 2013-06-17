@@ -27,7 +27,6 @@ Contributers:
 ### [Install](id:install)
 
 <!--
-
 Bower is a package manager for the web built by twitter, you should check it out, and download this package.
 
 `$ npm install bower -g`  
