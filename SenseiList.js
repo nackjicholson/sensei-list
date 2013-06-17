@@ -30,6 +30,13 @@
 }(this, function ($, _, Backbone, ChildViewContainer) {
   'use strict';
 
+  // TODO...this should be in some universal place, or in some sort of helpers library.
+  function throwError(message, name) {
+    var error = new Error(message);
+    error.name = name || 'Error';
+    throw error;
+  }
+
   // This is SenseiList.
   var SenseiList = Backbone.View.extend({
 
