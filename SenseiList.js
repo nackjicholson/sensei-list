@@ -1,31 +1,26 @@
 // ## SenseiList.js
-// 
-// // author: Will Vaughn
 //
-// > description
-// 
-// The below Use Anywhere setup was so graciously provided to me by:
-// <https://github.com/umdjs/umd/blob/master/returnExports.js>
+// > A cheap knockoff of Marionette.CollectionView
+//
 
 (function (root, factory) {
-    // Add CommonJS support back in if we decide to publish this and gcm on npm.
-    // It would be nice to figure out how to manage all this with browserify.
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([
-          'jquery',
-          'underscore',
-          'backbone',
-          'backbone.babysitter'
-        ], factory);
-    } else {
-        // Browser globals (root is window)
-        root.SenseiList = factory(
-          root.jQuery,
-          root._,
-          root.Backbone,
-          root.Backbone.ChildViewContainer
-        );
+  // Add CommonJS support back in if we decide to publish this and gcm on npm.
+  // It would be nice to figure out how to manage all this with browserify.
+  if (typeof define === 'function' && define.amd) {
+    define([
+      'jquery',
+      'underscore',
+      'backbone',
+      'backbone.babysitter'
+    ], factory);
+  } else {
+    // Browser globals (root is window)
+    root.SenseiList = factory(
+      root.jQuery,
+      root._,
+      root.Backbone,
+      root.Backbone.ChildViewContainer
+    );
   }
 }(this, function ($, _, Backbone, ChildViewContainer) {
   'use strict';
@@ -58,9 +53,11 @@
 
     // Non-api method for creating collection event listeners.
     _setupListeners: function() {
-      this.listenTo(this.collection, "add", this.addBaby, this);
-      this.listenTo(this.collection, "remove", this.freeItem, this);
-      this.listenTo(this.collection, "reset", this.render, this);
+      if(this.collection) {
+        this.listenTo(this.collection, "add", this.addBaby, this);
+        this.listenTo(this.collection, "remove", this.freeItem, this);
+        this.listenTo(this.collection, "reset", this.render, this);
+      }
     },
 
     // todo, make this better.
@@ -84,17 +81,17 @@
       }
     },
 
-    // Iterates on the collection, passing every model to `this.addItem`. 
+    // Iterates on the collection, passing every model to `this.addItem`.
     addAllBabies: function() {
       var ItemView;
 
-      // a this.getItemView method could keep me from repeating this itemView check in addBaby. 
+      // a this.getItemView method could keep me from repeating this itemView check in addBaby.
       if (!this.itemView) {
         throwError("An `itemView` must be specified", "NoItemViewError");
       }
 
       this.collection.each(function(model) {
-        ItemView = this.itemView; 
+        ItemView = this.itemView;
         this.addItem(model, ItemView);
       }, this);
     },
@@ -106,7 +103,7 @@
       var ItemView
         , view;
 
-      // a this.getItemView method could keep me from repeating this itemView check in addAllbabies. 
+      // a this.getItemView method could keep me from repeating this itemView check in addAllbabies.
       if (!this.itemView) {
         throwError("An `itemView` must be specified", "NoItemViewError");
       }
